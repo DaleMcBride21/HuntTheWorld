@@ -17,7 +17,7 @@ header{
     background-color: var(--beige);
     top:0;
     height: 40px;
-    width: 200px;
+    width: 100%;
     text-align: center;
 }
 
@@ -51,10 +51,12 @@ main{
     font-size: 1.2em;
 }
 
-.flex-container {
+.country-flex {
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
+    flex-wrap: wrap;
+    gap: 5vmin;
 }
 
 .country-card {
@@ -66,16 +68,15 @@ main{
 }
 
 .country-card img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+    width: 25vmin;
+
 }
 
 footer {
     display: flex;
-    position:absolute;
+    position: relative;
     bottom: 0;
-    margin-left: 5vminl;
-    width: 100%;
+    margin-left: 5vmin;
+    width: 30%;
     gap: 20px;
 }
