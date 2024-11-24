@@ -16,9 +16,10 @@ body {
 header{
     background-color: var(--beige);
     top:0;
-    height: 40px;
+    padding-top: 2vmin;
     width: 100%;
     text-align: center;
+    margin-bottom: 3vmin;
 }
 
 header a{
@@ -32,10 +33,15 @@ header a:hover{
     color: var(--dark-green);
 }
 
+header h1{
+    padding-bottom: 3vmin;
+}
+
 main{
     text-align: center;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 200px);
 }
+
 #search {
     width: 50vmin;
     margin-top: 5vmin;
@@ -52,7 +58,7 @@ main{
     font-size: 1.2em;
 }
 
-.country-flex {
+.animal-flex {
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
@@ -60,27 +66,17 @@ main{
     gap: 5vmin;
 }
 
-.country-card {
+.animal-card {
     max-width: 30%;
     background-color: var(--beige);
     border-radius: 15px;
-    padding: 5vmin;
+    padding: 3vmin;
     text-align: center;
 }
 
-.country-card img {
+.animal-card img {
     width: 25vmin;
 
-}
-
-.country-card:hover 
-{
-    filter:brightness(50%);
-}
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 footer {
