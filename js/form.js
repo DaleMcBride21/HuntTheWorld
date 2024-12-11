@@ -1,76 +1,75 @@
-// Function to calculate the Mule Deer score
 function calculateScore() {
+  // Validate inputs and ensure no negative values
+  const inputs = document.querySelectorAll('input');
+  let isValid = true;
+
+  inputs.forEach(input => {
+    const value = parseFloat(input.value);
+    if (isNaN(value) || value < 0) {
+      isValid = false;
+      input.classList.add('error'); // Add error class for invalid input
+    } else {
+      input.classList.remove('error'); // Remove error class for valid input
+    }
+  });
+
+  if (!isValid) {
+    document.getElementById('result').innerText = 'Please enter valid non-negative values for all fields.';
+    return;
+  }
+
   // Capture the input values from the form
   const pointsRight = parseFloat(document.getElementById('pointsRight').value) || 0;
   const pointsLeft = parseFloat(document.getElementById('pointsLeft').value) || 0;
   const tipToTip = parseFloat(document.getElementById('tipToTipWhole').value) || 0;
   const greatestSpread = parseFloat(document.getElementById('greatestSpreadWhole').value) || 0;
   const insideSpread = parseFloat(document.getElementById('insideSpreadWhole').value) || 0;
-  
-  const abnormalRight1 = parseFloat(document.getElementById('abnormalRight').value) || 0;
-  const abnormalLeft1 = parseFloat(document.getElementById('abnormalLeft').value) || 0;
+
+  const abnormalRight1 = parseFloat(document.getElementById('abnormalRight1').value) || 0;
+  const abnormalLeft1 = parseFloat(document.getElementById('abnormalLeft1').value) || 0;
   const abnormalRight2 = parseFloat(document.getElementById('abnormalRight2').value) || 0;
   const abnormalLeft2 = parseFloat(document.getElementById('abnormalLeft2').value) || 0;
-  const abnormalRight3 = parseFloat(document.getElementById('abnormalRight3').value) || 0;
-  const abnormalLeft3 = parseFloat(document.getElementById('abnormalLeft3').value) || 0;
-  const abnormalRight4 = parseFloat(document.getElementById('abnormalRight4').value) || 0;
-  const abnormalLeft4 = parseFloat(document.getElementById('abnormalLeft4').value) || 0;
-  const abnormalRight5 = parseFloat(document.getElementById('abnormalRight5').value) || 0;
-  const abnormalLeft5 = parseFloat(document.getElementById('abnormalLeft5').value) || 0;
-  const abnormalRight6 = parseFloat(document.getElementById('abnormalRight6').value) || 0;
-  const abnormalLeft6 = parseFloat(document.getElementById('abnormalLeft6').value) || 0;
-  
+
   const mainBeamRight = parseFloat(document.getElementById('mainBeamRight').value) || 0;
   const mainBeamLeft = parseFloat(document.getElementById('mainBeamLeft').value) || 0;
-  const firstPointRight = parseFloat(document.getElementById('firstPointRight').value) || 0;
-  const firstPointLeft = parseFloat(document.getElementById('firstPointLeft').value) || 0;
-  const secondPointRight = parseFloat(document.getElementById('secondPointRight').value) || 0;
-  const secondPointLeft = parseFloat(document.getElementById('secondPointLeft').value) || 0;
-  const thirdPointRight = parseFloat(document.getElementById('thirdPointRight').value) || 0;
-  const thirdPointLeft = parseFloat(document.getElementById('thirdPointLeft').value) || 0;
-  const fourthPointRight = parseFloat(document.getElementById('fourthPointRight').value) || 0;
-  const fourthPointLeft = parseFloat(document.getElementById('fourthPointLeft').value) || 0;
-  
-  const circumferenceMainBeamBottomRight = parseFloat(document.getElementById('circumferenceMainBeamBottomRight').value) || 0;
-  const circumferenceMainBeamBottomLeft = parseFloat(document.getElementById('circumferenceMainBeamBottomLeft').value) || 0;
-  const circumferenceBetweenFirstSecondPointRight = parseFloat(document.getElementById('circumferenceBetweenFirstSecondPointRight').value) || 0;
-  const circumferenceBetweenFirstSecondPointLeft = parseFloat(document.getElementById('circumferenceBetweenFirstSecondPointLeft').value) || 0;
-  const circumferenceBetweenSecondThirdPointRight = parseFloat(document.getElementById('circumferenceBetweenSecondThirdPointRight').value) || 0;
-  const circumferenceBetweenSecondThirdPointLeft = parseFloat(document.getElementById('circumferenceBetweenSecondThirdPointLeft').value) || 0;
-  const circumferenceBetweenThirdFourthRight = parseFloat(document.getElementById('circumferenceBetweenThirdFourthRight').value) || 0;
-  const circumferenceBetweenThirdFourthLeft = parseFloat(document.getElementById('circumferenceBetweenThirdFourthLeft').value) || 0;
 
-  // Boone and Crockett score calculation (simplified version)
+  const circumferenceRight1 = parseFloat(document.getElementById('circumferenceRight1Whole').value) || 0;
+  const circumferenceLeft1 = parseFloat(document.getElementById('circumferenceLeft1Whole').value) || 0;
+  const circumferenceRight2 = parseFloat(document.getElementById('circumferenceRight2Whole').value) || 0;
+  const circumferenceLeft2 = parseFloat(document.getElementById('circumferenceLeft2Whole').value) || 0;
+  const circumferenceRight3 = parseFloat(document.getElementById('circumferenceRight3Whole').value) || 0;
+  const circumferenceLeft3 = parseFloat(document.getElementById('circumferenceLeft3Whole').value) || 0;
+  const circumferenceRight4 = parseFloat(document.getElementById('circumferenceRight4Whole').value) || 0;
+  const circumferenceLeft4 = parseFloat(document.getElementById('circumferenceLeft4Whole').value) || 0;
+
+  // Calculate individual sections of the score
   const totalPoints = pointsRight + pointsLeft;
-  const spreadScore = Math.max(tipToTip, greatestSpread, insideSpread);
-  const beamLengthScore = (mainBeamRight + mainBeamLeft);
-  
-  // Abnormal Points calculation
-  const abnormalPoints = (abnormalRight1 + abnormalLeft1) + 
-                         (abnormalRight2 + abnormalLeft2) + 
-                         (abnormalRight3 + abnormalLeft3) + 
-                         (abnormalRight4 + abnormalLeft4) + 
-                         (abnormalRight5 + abnormalLeft5) + 
-                         (abnormalRight6 + abnormalLeft6);
-  
-  const circumferenceScore = (circumferenceMainBeamBottomRight + circumferenceMainBeamBottomLeft) +
-                             (circumferenceBetweenFirstSecondPointRight + circumferenceBetweenFirstSecondPointLeft) + 
-                             (circumferenceBetweenSecondThirdPointRight + circumferenceBetweenSecondThirdPointLeft) + 
-                             (circumferenceBetweenThirdFourthRight + circumferenceBetweenThirdFourthLeft);
-                             
-  const pointLengthScore = (firstPointRight + firstPointLeft) + 
-                           (secondPointRight + secondPointLeft) + 
-                           (thirdPointRight + thirdPointLeft) + 
-                           (fourthPointRight + fourthPointLeft);
 
-  // Calculate the gross score (sum of all relevant measurements)
-  const grossScore = totalPoints + spreadScore + beamLengthScore + abnormalPoints + circumferenceScore + pointLengthScore;
+  // Spread score uses the inside spread, limited by the longest main beam
+  const maxSpread = Math.min(insideSpread, Math.max(mainBeamRight, mainBeamLeft));
+
+  // Total length of the main beams
+  const beamLengthScore = mainBeamRight + mainBeamLeft;
+
+  // Circumference measurements (add all the measurements for total circumference score)
+  const circumferenceScore = circumferenceRight1 + circumferenceLeft1 + circumferenceRight2 + circumferenceLeft2 + 
+                             circumferenceRight3 + circumferenceLeft3 + circumferenceRight4 + circumferenceLeft4;
+
+  // Abnormal Points deductions
+  const totalAbnormalPoints = abnormalRight1 + abnormalLeft1 + abnormalRight2 + abnormalLeft2;
+
+  // Gross score before deductions
+  const grossScore = totalPoints + maxSpread + beamLengthScore + circumferenceScore;
+
+  // Net score (gross score minus deductions)
+  const netScore = grossScore - totalAbnormalPoints;
 
   // Display the result
-  document.getElementById('result').innerText = `Gross Score: ${grossScore.toFixed(2)}`;
+  document.getElementById('result').innerText = `Gross Score: ${grossScore.toFixed(2)} | Net Score: ${netScore.toFixed(2)}`;
 
   // Save the result to localStorage
   localStorage.setItem('deerGrossScore', grossScore.toFixed(2));
+  localStorage.setItem('deerNetScore', netScore.toFixed(2));
 }
 
 // Save each input value to localStorage when changed
@@ -86,10 +85,11 @@ document.querySelectorAll('input').forEach(input => {
   }
 });
 
-// Load the gross score from localStorage if available
+// Load the gross and net scores from localStorage if available
 window.onload = function() {
   const storedGrossScore = localStorage.getItem('deerGrossScore');
-  if (storedGrossScore) {
-    document.getElementById('result').innerText = `Gross Score: ${storedGrossScore}`;
+  const storedNetScore = localStorage.getItem('deerNetScore');
+  if (storedGrossScore && storedNetScore) {
+    document.getElementById('result').innerText = `Gross Score: ${storedGrossScore} | Net Score: ${storedNetScore}`;
   }
 };
