@@ -1,4 +1,17 @@
-import {countriesTempelate} from "./templates.mjs";
+import { countriesTempelate } from "./templates.mjs";
+
+document.getElementById('search-btn').addEventListener('click', () => {
+  const countryFlex = document.querySelector('.country-flex');
+  
+  // Reset animation by removing the 'loaded' class
+  countryFlex.classList.remove('loaded');
+  
+  // Optionally, hide the flex container before content load
+  countryFlex.style.opacity = 0;
+  
+  // Fetch and display the data related to the searched country
+  searchCountry();
+});
 
 const baseUrl = "https://restcountries.com/v3.1/";
 
@@ -10,33 +23,46 @@ async function getJson(url) {
   const response = await fetch(baseUrl + url, options);
   if (response.ok) {
     data = await response.json();
-  } 
-  else 
-  {
-    /*
-    ADD a message that informs the user that no such country was found
-    */
+  } else {
+    // Add a message that informs the user that no such country was found
     throw new Error("response not ok");
   }
   return data;
 }
 
-async function searchCountry()
-{
-    let search = document.querySelector("#search").value;
+async function searchCountry() {
+  let search = document.querySelector("#search").value;
+  try {
     const results = await getJson(`name/${search}`);
     console.log(results);
     setContries(results);
+  } catch (error) {
+    console.error(error);
+    alert('Country not found');
+  }
 }
 
-function setContries(data)
-{
-    let flexbox = document.querySelector(".country-flex");
-    let htmlToInsert = data.map(countriesTempelate);
-    flexbox.innerHTML = htmlToInsert.join("");
+function setContries(data) {
+  let flexbox = document.querySelector(".country-flex");
+  
+  // Clear existing countries
+  flexbox.innerHTML = '';
+  
+  let htmlToInsert = data.map(countriesTempelate);
+  flexbox.innerHTML = htmlToInsert.join("");
+  
+  // Re-apply the 'loaded' class with a small timeout for smooth fade-in
+  setTimeout(() => { 
+    flexbox.classList.add("loaded");
+    // Optionally, reset opacity to 1 after animation class is applied
+    flexbox.style.opacity = 1;
+  }, 10); // Adding a small timeout to ensure DOM is updated before animation starts
 }
 
-document.getElementById("search-btn").addEventListener("click", searchCountry)
+document.getElementById("search-btn").addEventListener("click", searchCountry);
+
+
+
 
 /*
 ITEMS TO IMPLEMENT/THINK ABOUT

@@ -13,36 +13,37 @@ body {
     margin: 0;
 }
 
-header{
+header {
     background-color: var(--beige);
-    top:0;
+    top: 0;
     height: 40px;
     width: 100%;
     text-align: center;
 }
 
-header a{
+header a {
     padding: 5px 50px;
     text-decoration: none;
     color: var(--brown);
     font-size: 2em;
 }
 
-header a:hover{
+header a:hover {
     color: var(--dark-green);
 }
 
-main{
+main {
     text-align: center;
     min-height: calc(100vh - 100px);
 }
+
 #search {
     width: 50vmin;
     margin-top: 5vmin;
     font-size: 2em;
 }
 
-#search-btn{
+#search-btn {
     font-size: 2em;
 }
 
@@ -52,12 +53,31 @@ main{
     font-size: 1.2em;
 }
 
+/* Ensure initial opacity is 0 */
 .country-flex {
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
     flex-wrap: wrap;
     gap: 5vmin;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Ensure smooth transition */
+}
+
+/* Keyframe for FadeIn animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Trigger the fade-in when content is loaded */
+.country-flex.loaded {
+    opacity: 1;
+    animation: fadeIn 1s forwards; /* This triggers the fade-in animation */
 }
 
 .country-card {
@@ -70,12 +90,10 @@ main{
 
 .country-card img {
     width: 25vmin;
-
 }
 
-.country-card:hover 
-{
-    filter:brightness(50%);
+.country-card:hover {
+    filter: brightness(50%);
 }
 
 a {
