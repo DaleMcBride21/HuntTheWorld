@@ -85,14 +85,36 @@ export const RegionData =
         Name: "Oceania",
         Animals: [
             {
-                Name: "",
-                Image: "",
-                Alt: "",
+                Name: "Sambar deer (Rusa unicolor)",
+                Image: "images/Oceania/SambarDeer.jpg",
+                Alt: "A picture of some Samba Deer resting",
+                PhotoCredit: {
+                    Name: "Sneha Chandrashekar",
+                    Profile: "https://unsplash.com/@itssnehac?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+                    Website: "Unsplash",
+                    Weblink: "https://unsplash.com/photos/a-couple-deer-in-the-grass-pfZtyK7SbC8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                }
+            },
+            {
+                Name: "Chamois (Rupicapra rupicapra)",
+                Image: "images/Oceania/Chamois.jpg",
+                Alt: "A chamois standing on a lush green hill",
+                PhotoCredit: {
+                    Name: "Adrien Stachowiak",
+                    Profile: "https://unsplash.com/@adrien_s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash",
+                    Website: "Unsplash",
+                    Weblink: "https://unsplash.com/photos/a-goat-standing-on-a-lush-green-hillside-zYN0KX_DJMk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+                }
+            },
+            {
+                Name: "Javan Rusa (Rusa timorensis)",
+                Image: "images/Oceania/Rusa.webp",
+                Alt: "A rusa doe and buck standing together",
                 PhotoCredit: {
                     Name: "",
                     Profile: "",
-                    Website: "",
-                    Weblink: ""
+                    Website: "Animalia",
+                    Weblink: "https://animalia.bio/rusa-deer"
                 }
             }
         ]

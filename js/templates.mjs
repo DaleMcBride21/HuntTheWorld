@@ -12,6 +12,14 @@ export function countriesTempelate(country)
 
 export function animalTemplete(Animal)
 {
+    if(Animal.PhotoCredit.Name == "")
+    {
+        return `<section class="animal-card">
+    <p class="name">${Animal.Name}</p>
+    <img src="${Animal.Image}" alt="${Animal.Alt}">
+    <p>Photo from <a href="${Animal.PhotoCredit.Weblink}">${Animal.PhotoCredit.Website}</a></p>
+    </section>`;
+    }
     return `<section class="animal-card">
     <p class="name">${Animal.Name}</p>
     <img src="${Animal.Image}" alt="${Animal.Alt}">
