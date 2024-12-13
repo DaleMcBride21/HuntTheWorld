@@ -26,6 +26,71 @@ header a:hover{
     color: var(--dark-green);
 }
 
+header {
+    background-color: var(--beige);
+    top: 0;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+header a {
+    padding: 5px 50px;
+    text-decoration: none;
+    color: var(--brown);
+    font-size: 2em;
+}
+
+header a:hover {
+    color: var(--dark-green);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: var(--beige);
+    padding: 10px;
+}
+
+nav img {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-links {
+    display: none; /* Hidden by default */
+    flex-direction: row; /* Stack links vertically for simplicity */
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 0;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: var(--black);
+}
+
+.toggle-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 70px;
+}
+
+.toggle-btn:hover {
+    background-color: #777;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     background-color: var(--white); 

@@ -85,6 +85,16 @@ document.querySelectorAll('input').forEach(input => {
   }
 });
 
+function toggleNav() {
+  const navLinks = document.querySelector('.nav-links');
+  console.log('toggled')
+  if (navLinks.style.display === 'flex') {
+      navLinks.style.display = 'none';
+  } else {
+      navLinks.style.display = 'flex';
+  }
+}
+
 // Load the gross and net scores from localStorage if available
 window.onload = function() {
   const storedGrossScore = localStorage.getItem('deerGrossScore');
@@ -93,3 +103,6 @@ window.onload = function() {
     document.getElementById('result').innerText = `Gross Score: ${storedGrossScore} | Net Score: ${storedNetScore}`;
   }
 };
+
+
+document.querySelector('.toggle-btn').addEventListener('click', toggleNav);

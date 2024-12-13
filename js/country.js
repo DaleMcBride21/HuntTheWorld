@@ -42,6 +42,17 @@ async function searchCountry() {
   }
 }
 
+function toggleNav() {
+  const navLinks = document.querySelector('.nav-links');
+  console.log('toggled')
+  if (navLinks.style.display === 'flex') {
+      navLinks.style.display = 'none';
+  } else {
+      navLinks.style.display = 'flex';
+  }
+}
+
+
 function setContries(data) {
   let flexbox = document.querySelector(".country-flex");
   
@@ -60,6 +71,7 @@ function setContries(data) {
 }
 
 document.getElementById("search-btn").addEventListener("click", searchCountry);
+document.querySelector('.toggle-btn').addEventListener('click', toggleNav);
 
 
 
